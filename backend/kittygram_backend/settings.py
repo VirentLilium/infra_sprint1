@@ -1,13 +1,17 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+load_dotenv(BASE_DIR.parent / '.env')
 
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY', 'default-secret-key-for-testing-django-project')
 
-ALLOWED_HOSTS = []
+DEBUG = False
+
+ALLOWED_HOSTS = ['158.160.225.2', '127.0.0.1', 'localhost', 'testinghost.work.gd']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -90,10 +94,11 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static_backend/'
+STATIC_ROOT = BASE_DIR / 'static_backend'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = '/var/www/kittygram/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -110,3 +115,5 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 
 }
+
+CSRF_TRUSTED_ORIGINS = ['http://testinghost.work.gd', 'https://testinghost.work.gd']

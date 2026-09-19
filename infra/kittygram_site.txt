@@ -1,0 +1,6 @@
+ IP: 158.160.225.2;
+ name_taski: https://testinghost.hopto.org;
+ name_kittygram: https://testinghost.work.gd;
+ login: admin;
+ password: Ab080452.;
+ 
